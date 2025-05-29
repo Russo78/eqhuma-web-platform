@@ -1,0 +1,77 @@
+# Dependencias
+node_modules
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Archivos de entorno
+.env
+.env.*
+!.env.example
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de desarrollo
+.git
+.gitignore
+.eslintrc
+.eslintignore
+.prettierrc
+.vscode
+*.md
+!README.md
+
+# Archivos de prueba
+__tests__
+*.test.js
+*.spec.js
+coverage
+.nyc_output
+
+# Archivos de construcción
+dist
+build
+*.log
+
+# Archivos temporales
+*.swp
+*.swo
+*~
+
+# Directorios de logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos de IDE
+.idea
+*.sublime-workspace
+*.sublime-project
+
+# Archivos de documentación
+docs
+*.pdf
+*.doc
+*.docx
+
+# Archivos de respaldo
+*.bak
+*.backup
+*backup*
+
+# Archivos de caché
+.cache
+.npm
+.yarn
+
+# Otros archivos innecesarios
+.travis.yml
+.circleci
+.github
+CHANGELOG.md
+CONTRIBUTING.md
+LICENSE
