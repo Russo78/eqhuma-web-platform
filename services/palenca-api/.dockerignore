@@ -1,0 +1,40 @@
+# Dependencias
+node_modules
+npm-debug.log
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# IDE y editores
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Archivos de ambiente
+.env
+.env.*
+
+# Archivos de prueba
+coverage/
+*.test.js
+__tests__/
+test/
+
+# Logs
+logs/
+*.log
+
+# Archivos temporales
+tmp/
+temp/
+
+# Git
+.git
+.gitignore
+
+# Otros
+README.md
+LICENSE
+*.md
