@@ -1,0 +1,135 @@
+version: '3.8'
+
+services:
+  api-manager:
+    build: ./services/api-manager
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+      - PORT=3001
+      - MONGODB_URI=mongodb://mongodb:27017/eqhuma
+    depends_on:
+      - mongodb
+    volumes:
+      - ./services/api-manager:/app
+      - /app/node_modules
+
+  payments:
+    build: ./services/payments
+    ports:
+      - "5002:5002"
+    environment:
+      - NODE_ENV=development
+      - PORT=5002
+      - MONGODB_URI=mongodb://mongodb:27017/eqhuma
+      - STP_API_URL=https://demo.stpmex.com/api
+      - STP_INSTITUTION_CODE=${STP_INSTITUTION_CODE}
+      - STP_PRIVATE_KEY=${STP_PRIVATE_KEY}
+      - STP_CERTIFICATE=${STP_CERTIFICATE}
+      - STP_ACCOUNT_KEY=${STP_ACCOUNT_KEY}
+    depends_on:
+      - mongodb
+    volumes:
+      - ./services/payments:/app
+      - /app/node_modules
+
+  palenca-api:
+    build: ./services/palenca-api
+    ports:
+      - "5003:5003"
+    environment:
+      - NODE_ENV=development
+      - PORT=5003
+      - MONGODB_URI=mongodb://mongodb:27017/eqhuma
+      - PALENCA_API_URL=${PALENCA_API_URL}
+      - PALENCA_API_KEY=${PALENCA_API_KEY}
+    depends_on:
+      - mongodb
+    volumes:
+      - ./services/palenca-api:/app
+      - /app/node_modules
+
+  apimarket-api:
+    build: ./services/apimarket-api
+    ports:
+      - "5004:5004"
+    environment:
+      - NODE_ENV=development
+      - PORT=5004
+      - MONGODB_URI=mongodb://mongodb:27017/eqhuma
+      - APIMARKET_URL=${APIMARKET_URL}
+      - APIMARKET_API_KEY=${APIMARKET_API_KEY}
+      - APIMARKET_SECRET_KEY=${APIMARKET_SECRET_KEY}
+    depends_on:
+      - mongodb
+    volumes:
+      - ./services/apimarket-api:/app
+      - /app/node_modules
+
+  courses:
+    build: ./services/courses
+    ports:
+      - "5001:5001"
+    environment:
+      - NODE_ENV=development
+      - PORT=5001
+      - MONGODB_URI=mongodb://mongodb:27017/eqhuma
+    depends_on:
+      - mongodb
+    volumes:
+      - ./services/courses:/app
+      - /app/node_modules
+
+  webinars:
+    build: ./services/webinars
+    ports:
+      - "5005:5005"
+    environment:
+      - NODE_ENV=development
+      - PORT=5005
+      - MONGODB_URI=mongodb://mongodb:27017/eqhuma
+    depends_on:
+      - mongodb
+    volumes:
+      - ./services/webinars:/app
+      - /app/node_modules
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - api-manager
+      - payments
+      - courses
+      - webinars
+      - palenca-api
+      - apimarket-api
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  mongodb_data:
+  redis_data:
+
+networks:
+  default:
+    driver: bridge
