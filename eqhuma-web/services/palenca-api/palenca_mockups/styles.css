@@ -1,0 +1,248 @@
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header styles */
+.header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* Form styles */
+.form-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.form-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #5a6a85;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #dbe0e8;
+    border-radius: 6px;
+    font-size: 15px;
+    transition: border-color 0.3s;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+button {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #3a7bc8;
+}
+
+/* Results table styles */
+.results-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.export-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.export-button {
+    padding: 8px 15px;
+    font-size: 14px;
+}
+
+.user-info {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eaeef3;
+}
+
+.filters {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.filter-control {
+    display: flex;
+    flex-direction: column;
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.results-table th,
+.results-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eaeef3;
+}
+
+.results-table th {
+    background-color: #f8fafc;
+    font-weight: 600;
+    color: #5a6a85;
+}
+
+.results-table tr:hover {
+    background-color: #f8fafc;
+}
+
+.summary {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eaeef3;
+}
+
+.summary-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    font-weight: 500;
+    color: #5a6a85;
+}
+
+.value {
+    font-size: 24px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.page-button {
+    background-color: transparent;
+    color: #4a90e2;
+    border: 1px solid #4a90e2;
+    padding: 8px 15px;
+}
+
+.page-button:hover {
+    background-color: #f0f7ff;
+}
+
+.page-info {
+    font-weight: 500;
+}
+
+/* Login specific styles */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f7fa;
+}
+
+.login-form {
+    width: 400px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    padding: 40px;
+}
+
+.login-form h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2c3e50;
+}
