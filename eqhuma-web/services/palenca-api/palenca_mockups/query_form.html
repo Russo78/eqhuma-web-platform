@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search - Semanas Cotizadas Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">Semanas Cotizadas</div>
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <span>Welcome, User</span>
+                <a href="#" style="color: #4a90e2; text-decoration: none;">Log Out</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="form-container">
+            <h2 class="form-title">Search Employment History</h2>
+            <form class="search-form">
+                <div class="form-row">
+                    <div class="form-group" style="flex: 1;">
+                        <label for="identifier">NSS/CURP</label>
+                        <input type="text" id="identifier" name="identifier" placeholder="Enter NSS or CURP number" required />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group" style="flex: 1;">
+                        <label for="start-date">Start Date</label>
+                        <input type="date" id="start-date" name="start_date" />
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label for="end-date">End Date</label>
+                        <input type="date" id="end-date" name="end_date" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group" style="flex: 1;">
+                        <label for="employer">Employer (Optional)</label>
+                        <input type="text" id="employer" name="employer" placeholder="Filter by employer name" />
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label for="region">Region (Optional)</label>
+                        <select id="region" name="region">
+                            <option value="">Select region</option>
+                            <option value="north">North</option>
+                            <option value="south">South</option>
+                            <option value="central">Central</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: flex-end; margin-top: 10px;">
+                    <button type="submit" class="search-button">Search</button>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Placeholder for results that will appear after search -->
+        <div style="text-align: center; padding: 50px; color: #a0a8b7;">
+            <div style="font-size: 24px; margin-bottom: 10px;">No results to display</div>
+            <div>Complete the form above and submit to see employment history results</div>
+        </div>
+    </div>
+</body>
+</html>
