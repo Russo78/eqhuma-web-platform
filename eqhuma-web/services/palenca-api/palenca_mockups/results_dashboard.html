@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - Semanas Cotizadas Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">Semanas Cotizadas</div>
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <span>Welcome, User</span>
+                <a href="#" style="color: #4a90e2; text-decoration: none;">Log Out</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="form-container">
+            <h2 class="form-title">Search Employment History</h2>
+            <form class="search-form">
+                <div class="form-row">
+                    <div class="form-group" style="flex: 1;">
+                        <label for="identifier">NSS/CURP</label>
+                        <input type="text" id="identifier" name="identifier" value="OOVC671225HDFLRC09" required />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group" style="flex: 1;">
+                        <label for="start-date">Start Date</label>
+                        <input type="date" id="start-date" name="start_date" value="2018-01-01" />
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label for="end-date">End Date</label>
+                        <input type="date" id="end-date" name="end_date" value="2022-12-31" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group" style="flex: 1;">
+                        <label for="employer">Employer (Optional)</label>
+                        <input type="text" id="employer" name="employer" />
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label for="region">Region (Optional)</label>
+                        <select id="region" name="region">
+                            <option value="">Select region</option>
+                            <option value="north">North</option>
+                            <option value="south">South</option>
+                            <option value="central" selected>Central</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: flex-end; margin-top: 10px;">
+                    <button type="submit" class="search-button">Update Search</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="results-container">
+            <div class="results-header">
+                <h2>Employment History Results</h2>
+                <div class="export-controls">
+                    <button class="export-button" data-format="pdf">Export as PDF</button>
+                    <button class="export-button" data-format="excel">Export as Excel</button>
+                </div>
+            </div>
+            
+            <div class="user-info">
+                <h3>Victor Hugo Olvera Cruz</h3>
+                <p>NSS: 04846999364 | CURP: OOVC671225HDFLRC09</p>
+            </div>
+            
+            <div class="filters">
+                <div class="filter-control">
+                    <label for="sort-by">Sort By</label>
+                    <select id="sort-by">
+                        <option value="start_date" selected>Start Date</option>
+                        <option value="end_date">End Date</option>
+                        <option value="employer">Employer</option>
+                        <option value="weeks">Weeks Contributed</option>
+                    </select>
+                </div>
+                <div class="filter-control">
+                    <label for="order">Order</label>
+                    <select id="order">
+                        <option value="desc" selected>Newest First</option>
+                        <option value="asc">Oldest First</option>
+                    </select>
+                </div>
+            </div>
+            
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Employer</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Position</th>
+                        <th>Weeks Contributed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>TECNOLOGIA Y MANUFACTURA SA DE CV</td>
+                        <td>2021-09-01</td>
+                        <td>2022-12-31</td>
+                        <td>Technical Specialist</td>
+                        <td>69</td>
+                    </tr>
+                    <tr>
+                        <td>SERVICIO DE ADMINISTRACION TRIBUTARIA</td>
+                        <td>2020-05-15</td>
+                        <td>2021-08-30</td>
+                        <td>Administrative Support</td>
+                        <td>67</td>
+                    </tr>
+                    <tr>
+                        <td>INSTITUTO NACIONAL ELECTORAL</td>
+                        <td>2019-03-01</td>
+                        <td>2020-04-30</td>
+                        <td>Technical Coordinator</td>
+                        <td>61</td>
+                    </tr>
+                    <tr>
+                        <td>SECRETARIA DE HACIENDA Y CREDITO PUBLICO</td>
+                        <td>2018-01-15</td>
+                        <td>2019-02-28</td>
+                        <td>Systems Analyst</td>
+                        <td>58</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="summary">
+                <div class="summary-item">
+                    <span class="label">Total Records:</span>
+                    <span class="value">4</span>
+                </div>
+                <div class="summary-item">
+                    <span class="label">Total Weeks Contributed:</span>
+                    <span class="value">255</span>
+                </div>
+                <div class="summary-item">
+                    <span class="label">Total Years:</span>
+                    <span class="value">4.9</span>
+                </div>
+            </div>
+            
+            <div class="pagination">
+                <button class="page-button" data-page="prev" disabled>Previous</button>
+                <span class="page-info">Page 1 of 1</span>
+                <button class="page-button" data-page="next" disabled>Next</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
