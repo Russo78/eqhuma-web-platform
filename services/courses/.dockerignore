@@ -1,0 +1,159 @@
+# Dependencias
+node_modules
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.pnpm-debug.log
+
+# Sistema de control de versiones
+.git
+.gitignore
+.gitattributes
+.github
+.gitlab-ci.yml
+
+# Entorno
+.env
+.env.*
+!.env.example
+
+# Archivos de desarrollo
+*.log
+logs
+*.pid
+*.seed
+*.pid.lock
+.DS_Store
+.idea
+.vscode
+*.swp
+*.swo
+.editorconfig
+.eslintrc
+.prettierrc
+.babelrc
+jest.config.js
+coverage
+.nyc_output
+
+# Archivos de construcción
+dist
+build
+*.tsbuildinfo
+.next
+out
+
+# Archivos temporales
+tmp
+temp
+.tmp
+*.tmp
+*.temp
+
+# Documentación
+docs
+*.md
+!README.md
+LICENSE
+AUTHORS
+CHANGELOG.md
+CONTRIBUTING.md
+
+# Tests
+__tests__
+test
+tests
+*.test.js
+*.spec.js
+*.test.ts
+*.spec.ts
+
+# Configuración
+.dockerignore
+docker-compose*.yml
+Dockerfile*
+.docker
+
+# Otros
+*.gz
+*.tar
+*.zip
+*.rar
+*.7z
+*.pdf
+*.txt
+!requirements.txt
+*.csv
+*.xls
+*.xlsx
+*.doc
+*.docx
+
+# Caché
+.cache
+.npm
+.yarn
+.pnp
+.pnp.js
+
+# Archivos de respaldo
+*~
+*.bak
+*.backup
+*.old
+
+# Archivos específicos del sistema operativo
+Thumbs.db
+desktop.ini
+
+# Archivos de configuración local
+.prettierignore
+.eslintignore
+.stylelintrc
+.browserslistrc
+
+# Archivos de dependencias de desarrollo
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Archivos de métricas y monitoreo
+.clinic
+.lighthouse
+.webpack
+stats.json
+
+# Archivos de CI/CD
+.travis.yml
+.circleci
+.jenkins
+.drone.yml
+.azure-pipelines.yml
+
+# Archivos de configuración de herramientas
+.husky
+.lint-staged
+.commitlint
+.storybook
+.cypress
+
+# Archivos de configuración de IDE
+.settings
+.project
+.classpath
+*.sublime-*
+.history
+
+# Archivos de análisis de código
+.sonarqube
+.scannerwork
+.codeclimate.yml
+.codecov.yml
+
+# Archivos de configuración de seguridad
+.snyk
+.auth
+.credentials
+*.pem
+*.key
+*.cert
