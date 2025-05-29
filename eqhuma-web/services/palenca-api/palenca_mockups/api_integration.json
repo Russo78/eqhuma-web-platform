@@ -1,0 +1,113 @@
+{
+    "api": {
+        "base_url": "https://api.example.com/v1",
+        "authentication": {
+            "type": "Bearer Token",
+            "endpoint": "/auth/login",
+            "method": "POST",
+            "request_body": {
+                "email": "string",
+                "password": "string"
+            },
+            "response": {
+                "token": "string",
+                "expires_at": "ISO datetime string"
+            }
+        },
+        "endpoints": [
+            {
+                "name": "Get Employment History",
+                "description": "Retrieves employment history for a specified user",
+                "endpoint": "/employment/history",
+                "method": "GET",
+                "parameters": {
+                    "identifier": "NSS or CURP identifier",
+                    "start_date": "YYYY-MM-DD (optional)",
+                    "end_date": "YYYY-MM-DD (optional)",
+                    "employer": "Filter by employer name (optional)",
+                    "region": "Filter by region (optional)",
+                    "page": "Page number (optional, default: 1)",
+                    "page_size": "Items per page (optional, default: 20)"
+                },
+                "response": {
+                    "user_info": {
+                        "name": "Full name of the individual",
+                        "nss": "NSS number",
+                        "curp": "CURP identifier"
+                    },
+                    "employment_records": [
+                        {
+                            "employer": "Employer name",
+                            "start_date": "YYYY-MM-DD",
+                            "end_date": "YYYY-MM-DD",
+                            "position": "Job position",
+                            "weeks_contributed": "Number of weeks"
+                        }
+                    ],
+                    "summary": {
+                        "total_records": "Total number of records",
+                        "total_weeks_contributed": "Sum of all weeks contributed",
+                        "total_years": "Converted weeks to years"
+                    },
+                    "pagination": {
+                        "current_page": "Current page number",
+                        "total_pages": "Total number of pages",
+                        "page_size": "Items per page"
+                    }
+                }
+            },
+            {
+                "name": "Generate Report",
+                "description": "Creates a PDF or Excel report of employment history",
+                "endpoint": "/reports/generate",
+                "method": "POST",
+                "request_body": {
+                    "identifier": "NSS or CURP identifier",
+                    "start_date": "YYYY-MM-DD (optional)",
+                    "end_date": "YYYY-MM-DD (optional)",
+                    "format": "pdf or excel",
+                    "include_details": "Boolean, whether to include detailed records"
+                },
+                "response": {
+                    "report_url": "URL to download the generated report",
+                    "expires_at": "ISO datetime when the report URL expires"
+                }
+            }
+        ]
+    },
+    "frontend_integration": {
+        "authentication": {
+            "description": "Handle user authentication and token storage",
+            "steps": [
+                "Collect user credentials via login form",
+                "Submit to authentication endpoint",
+                "Store token securely (localStorage or cookies)",
+                "Include token in all subsequent API requests",
+                "Handle token expiration and refresh"
+            ],
+            "code_sample": "// Authentication request\nconst response = await fetch('https://api.example.com/v1/auth/login', {\n  method: 'POST',\n  headers: { 'Content-Type': 'application/json' },\n  body: JSON.stringify({ email, password })\n});\nconst data = await response.json();\nlocal Storage.setItem('auth_token', data.token);"
+        },
+        "data_retrieval": {
+            "description": "Fetch employment history data based on search parameters",
+            "steps": [
+                "Collect search parameters from form",
+                "Construct API request with parameters",
+                "Handle loading state during request",
+                "Process and display response data",
+                "Handle pagination and sorting"
+            ],
+            "code_sample": "// Data retrieval request\nconst response = await fetch(`https://api.example.com/v1/employment/history?identifier=${identifier}&start_date=${startDate}`, {\n  method: 'GET',\n  headers: {\n    'Authorization': `Bearer ${localStorage.getItem('auth_token')}`,\n    'Content-Type': 'application/json'\n  }\n});\nconst data = await response.json();\n// Display data in UI"
+        },
+        "report_generation": {
+            "description": "Generate and download reports in PDF or Excel format",
+            "steps": [
+                "Collect report parameters from UI",
+                "Submit report generation request",
+                "Show loading indicator during processing",
+                "Receive download URL in response",
+                "Trigger file download in browser"
+            ],
+            "code_sample": "// Report generation\nconst response = await fetch('https://api.example.com/v1/reports/generate', {\n  method: 'POST',\n  headers: {\n    'Authorization': `Bearer ${localStorage.getItem('auth_token')}`,\n    'Content-Type': 'application/json'\n  },\n  body: JSON.stringify({\n    identifier: 'OOVC671225HDFLRC09',\n    format: 'pdf',\n    include_details: true\n  })\n});\nconst data = await response.json();\nwindow.location.href = data.report_url; // Trigger download"
+        }
+    }
+}
