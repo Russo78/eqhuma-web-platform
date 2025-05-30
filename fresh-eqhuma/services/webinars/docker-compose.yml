@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  # MongoDB service
+  mongodb:
+    image: mongo:4.4
+    container_name: eqhuma-webinars-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=eqhuma-webinars
+    restart: unless-stopped
+    networks:
+      - eqhuma-webinars-network
+
+  # EQHuma Webinars Microservice
+  webinars-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: eqhuma-webinars-service
+    restart: unless-stopped
+    ports:
+      - "5002:5002"
+    depends_on:
+      - mongodb
+    environment:
+      - NODE_ENV=production
+      - PORT=5002
+      - MONGO_URI=mongodb://mongodb:27017/eqhuma-webinars
+      - JWT_SECRET=${JWT_SECRET}
+      - ZOOM_API_KEY=${ZOOM_API_KEY}
+      - ZOOM_API_SECRET=${ZOOM_API_SECRET}
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+      - SMTP_HOST=${SMTP_HOST}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_USER=${SMTP_USER}
+      - SMTP_PASS=${SMTP_PASS}
+      - EMAIL_FROM=${EMAIL_FROM}
+      - FRONTEND_URL=${FRONTEND_URL}
+    volumes:
+      - ./uploads:/usr/src/app/uploads
+    networks:
+      - eqhuma-webinars-network
+
+# Volumes
+volumes:
+  mongodb_data:
+    driver: local
+
+# Networks
+networks:
+  eqhuma-webinars-network:
+    driver: bridge
